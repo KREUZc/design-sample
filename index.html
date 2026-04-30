@@ -7,8 +7,9 @@
   <style>
     :root{--bg:#05070b;--fg:#d8ecff;--muted:#9bb7cf;--line:rgba(120,190,255,.25)}
     *{box-sizing:border-box} body{margin:0;font-family:"IBM Plex Sans",Inter,system-ui;background:radial-gradient(circle at 20% 10%,#0b1220 0,#05070b 48%,#030406 100%);color:var(--fg)}
-    .scan{position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(to bottom,rgba(130,190,255,.03),rgba(130,190,255,.03) 1px,transparent 1px,transparent 3px);mix-blend-mode:screen;opacity:.45}
-    .wrap{max-width:1200px;margin:0 auto;padding:26px 18px 40px;position:relative}
+    .scan{position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(to bottom,rgba(130,190,255,.03),rgba(130,190,255,.03) 1px,transparent 1px,transparent 3px);mix-blend-mode:screen;opacity:.45;z-index:2}
+    #fx{position:fixed;inset:0;pointer-events:none;z-index:1}
+    .wrap{max-width:1200px;margin:0 auto;padding:26px 18px 40px;position:relative;z-index:3}
     h1{font-size:28px;letter-spacing:.08em;margin:0 0 6px;text-transform:uppercase}
     .desc{opacity:.9;margin:0 0 14px;color:var(--muted)}
     .toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 18px}
@@ -34,6 +35,7 @@
   </style>
 </head>
 <body>
+  <canvas id="fx"></canvas>
   <div class="scan"></div>
   <div class="wrap">
     <h1>Ghost Interface · Homepage Style Lab</h1>
@@ -80,6 +82,75 @@ themes.forEach(t=>{
   const k=document.createElement('div'); k.className='thumb '+t.id; k.textContent=t.name; k.onclick=()=>{current=t.id;render();window.scrollTo({top:0,behavior:'smooth'})}; thumbs.appendChild(k);
 });
 render();
+
+// particle neural current interaction
+const canvas=document.getElementById('fx');
+const ctx=canvas.getContext('2d');
+let w=0,h=0,dpr=Math.max(1,Math.min(2,window.devicePixelRatio||1));
+let mouse={x:-9999,y:-9999,active:false};
+const particles=[];
+const COUNT=95;
+function resize(){w=window.innerWidth;h=window.innerHeight;canvas.width=w*dpr;canvas.height=h*dpr;canvas.style.width=w+'px';canvas.style.height=h+'px';ctx.setTransform(dpr,0,0,dpr,0,0)}
+function rand(a,b){return Math.random()*(b-a)+a}
+function initParticles(){particles.length=0;for(let i=0;i<COUNT;i++){particles.push({x:rand(0,w),y:rand(0,h),vx:rand(-.22,.22),vy:rand(-.22,.22),r:rand(.8,2.2),e:0})}}
+function sparkBurst(x,y){for(let i=0;i<14;i++){particles.push({x,y,vx:rand(-2.2,2.2),vy:rand(-2.2,2.2),r:rand(1,2.8),e:1.2,ttl:rand(16,34)})}}
+function step(){
+  ctx.clearRect(0,0,w,h);
+  // edges/network lines near cursor
+  for(let i=0;i<particles.length;i++){
+    const p=particles[i];
+    p.x+=p.vx; p.y+=p.vy;
+    if(p.x<0||p.x>w)p.vx*=-1;
+    if(p.y<0||p.y>h)p.vy*=-1;
+
+    const dx=mouse.x-p.x, dy=mouse.y-p.y;
+    const dist=Math.hypot(dx,dy);
+    if(mouse.active && dist<140){
+      const force=(1-dist/140)*0.09;
+      p.vx += (-dy/dist||0)*force*0.8 + rand(-0.03,0.03);
+      p.vy += (dx/dist||0)*force*0.8 + rand(-0.03,0.03);
+      p.e=Math.min(1,p.e+0.08);
+    } else {
+      p.e=Math.max(0,p.e-0.02);
+    }
+
+    // friction
+    p.vx*=0.995; p.vy*=0.995;
+
+    const alpha=0.16 + p.e*0.8;
+    ctx.beginPath();
+    ctx.fillStyle=`rgba(132,221,255,${alpha})`;
+    ctx.shadowColor='rgba(130,220,255,.75)';
+    ctx.shadowBlur=8 + p.e*10;
+    ctx.arc(p.x,p.y,p.r + p.e*0.6,0,Math.PI*2);
+    ctx.fill();
+    ctx.shadowBlur=0;
+
+    if(p.ttl!==undefined){p.ttl--; if(p.ttl<=0){particles.splice(i,1); i--; continue;}}
+  }
+
+  // draw conductive links
+  for(let i=0;i<particles.length;i++){
+    for(let j=i+1;j<particles.length;j++){
+      const a=particles[i], b=particles[j];
+      const dx=a.x-b.x, dy=a.y-b.y; const d=Math.hypot(dx,dy);
+      if(d<82){
+        const e=Math.max(a.e,b.e);
+        const op=(1-d/82)*(0.06+e*0.28);
+        ctx.strokeStyle=`rgba(120,210,255,${op})`;
+        ctx.lineWidth=1;
+        ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+      }
+    }
+  }
+
+  requestAnimationFrame(step);
+}
+resize();initParticles();step();
+window.addEventListener('resize',()=>{resize(); initParticles();});
+window.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;mouse.active=true; if(Math.random()<0.08) sparkBurst(mouse.x,mouse.y)});
+window.addEventListener('mouseleave',()=>{mouse.active=false;mouse.x=-9999;mouse.y=-9999});
+window.addEventListener('click',e=>sparkBurst(e.clientX,e.clientY));
 </script>
 </body>
 </html>
