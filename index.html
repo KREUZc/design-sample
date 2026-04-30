@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design Sample — Home Themes</title>
+  <style>
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,-apple-system,sans-serif;background:#0b0b0b;color:#fff}
+    .wrap{max-width:1200px;margin:0 auto;padding:32px 20px}
+    h1{font-size:28px;margin:0 0 8px} p{opacity:.85}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px;margin-top:24px}
+    .card{border-radius:18px;overflow:hidden;min-height:280px;position:relative;padding:20px;display:flex;flex-direction:column;justify-content:space-between;border:1px solid rgba(255,255,255,.14)}
+    .tag{display:inline-block;font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.15)}
+    .title{font-size:30px;font-weight:700;line-height:1.1;margin:10px 0}
+    .sub{font-size:14px;max-width:42ch;opacity:.92}
+    .cta{align-self:flex-start;margin-top:14px;padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.4);text-decoration:none;color:inherit;font-weight:600}
+    .t1{background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb)}
+    .t2{background:linear-gradient(135deg,#111827,#14532d,#22c55e)}
+    .t3{background:linear-gradient(135deg,#1f2937,#7c2d12,#f97316)}
+    .t4{background:linear-gradient(135deg,#2e1065,#7e22ce,#e879f9)}
+    .t5{background:linear-gradient(135deg,#0f172a,#0f766e,#2dd4bf)}
+    .t6{background:linear-gradient(135deg,#111111,#3f3f46,#e4e4e7);color:#fff}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Master FJ — Homepage Style Exploration</h1>
+    <p>六種配色與 tone 的首頁 Hero 方向（可作為後續設計迭代基底）</p>
+    <div class="grid">
+      <section class="card t1"><div><span class="tag">Theme 01 · Trust Tech</span><div class="title">冷靜專業・科技藍</div><div class="sub">適合 AI/顧問品牌，傳達可靠、理性、可規模化。</div></div><a class="cta" href="#">開始合作</a></section>
+      <section class="card t2"><div><span class="tag">Theme 02 · Growth Nature</span><div class="title">穩健成長・森林綠</div><div class="sub">適合教育與長期服務，給人安心、持續優化的感受。</div></div><a class="cta" href="#">查看方案</a></section>
+      <section class="card t3"><div><span class="tag">Theme 03 · Bold Action</span><div class="title">行動導向・活力橘</div><div class="sub">強調推進速度與執行力，適合產品衝刺與行銷型網站。</div></div><a class="cta" href="#">立即啟動</a></section>
+      <section class="card t4"><div><span class="tag">Theme 04 · Premium Creator</span><div class="title">創意高端・紫光</div><div class="sub">適合個人品牌與創作者定位，呈現差異化與獨特審美。</div></div><a class="cta" href="#">閱讀故事</a></section>
+      <section class="card t5"><div><span class="tag">Theme 05 · Calm Future</span><div class="title">未來感・青綠</div><div class="sub">偏產品設計與科技感，兼具清爽與前衛，適合 SaaS 首頁。</div></div><a class="cta" href="#">免費試用</a></section>
+      <section class="card t6"><div><span class="tag">Theme 06 · Minimal Mono</span><div class="title">極簡黑白・高對比</div><div class="sub">風格克制，訊息聚焦，適合強內容與高端專業形象。</div></div><a class="cta" href="#">看更多案例</a></section>
+    </div>
+  </div>
+</body>
+</html>
