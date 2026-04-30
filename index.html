@@ -3,37 +3,77 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Design Sample — Home Themes</title>
+  <title>design-sample · Homepage Themes</title>
   <style>
-    *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,-apple-system,sans-serif;background:#0b0b0b;color:#fff}
-    .wrap{max-width:1200px;margin:0 auto;padding:32px 20px}
-    h1{font-size:28px;margin:0 0 8px} p{opacity:.85}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px;margin-top:24px}
-    .card{border-radius:18px;overflow:hidden;min-height:280px;position:relative;padding:20px;display:flex;flex-direction:column;justify-content:space-between;border:1px solid rgba(255,255,255,.14)}
-    .tag{display:inline-block;font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.15)}
-    .title{font-size:30px;font-weight:700;line-height:1.1;margin:10px 0}
-    .sub{font-size:14px;max-width:42ch;opacity:.92}
-    .cta{align-self:flex-start;margin-top:14px;padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.4);text-decoration:none;color:inherit;font-weight:600}
+    :root{--bg:#0b0b0b;--fg:#fff;--muted:rgba(255,255,255,.78)}
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--fg)}
+    .wrap{max-width:1200px;margin:0 auto;padding:26px 18px 40px}
+    h1{font-size:28px;margin:0 0 6px}.desc{opacity:.85;margin:0 0 14px}
+    .toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 18px}
+    .btn{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.06);color:var(--fg);cursor:pointer;font-size:13px}
+    .btn.active{background:#fff;color:#111;border-color:#fff}
+    .hero{border-radius:20px;overflow:hidden;min-height:420px;position:relative;padding:30px;border:1px solid rgba(255,255,255,.18);display:flex;flex-direction:column;justify-content:space-between}
+    .tag{display:inline-block;font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.16)}
+    .title{font-size:54px;font-weight:800;line-height:1.05;letter-spacing:.02em;margin:12px 0}.sub{font-size:16px;line-height:1.8;max-width:52ch;color:var(--muted)}
+    .cta{align-self:flex-start;margin-top:16px;padding:11px 15px;border-radius:10px;border:1px solid rgba(255,255,255,.42);text-decoration:none;color:inherit;font-weight:700}
+    .meta{display:flex;gap:12px;align-items:center;font-size:12px;opacity:.8;margin-top:12px}
+    .thumb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-top:18px}
+    .thumb{border-radius:12px;min-height:84px;border:1px solid rgba(255,255,255,.14);padding:10px;cursor:pointer;display:flex;align-items:flex-end;font-size:12px;font-weight:700}
+
     .t1{background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb)}
     .t2{background:linear-gradient(135deg,#111827,#14532d,#22c55e)}
     .t3{background:linear-gradient(135deg,#1f2937,#7c2d12,#f97316)}
     .t4{background:linear-gradient(135deg,#2e1065,#7e22ce,#e879f9)}
     .t5{background:linear-gradient(135deg,#0f172a,#0f766e,#2dd4bf)}
-    .t6{background:linear-gradient(135deg,#111111,#3f3f46,#e4e4e7);color:#fff}
+    .t6{background:linear-gradient(135deg,#0f0f10,#3f3f46,#a1a1aa)}
   </style>
 </head>
 <body>
   <div class="wrap">
-    <h1>Master FJ — Homepage Style Exploration</h1>
-    <p>六種配色與 tone 的首頁 Hero 方向（可作為後續設計迭代基底）</p>
-    <div class="grid">
-      <section class="card t1"><div><span class="tag">Theme 01 · Trust Tech</span><div class="title">冷靜專業・科技藍</div><div class="sub">適合 AI/顧問品牌，傳達可靠、理性、可規模化。</div></div><a class="cta" href="#">開始合作</a></section>
-      <section class="card t2"><div><span class="tag">Theme 02 · Growth Nature</span><div class="title">穩健成長・森林綠</div><div class="sub">適合教育與長期服務，給人安心、持續優化的感受。</div></div><a class="cta" href="#">查看方案</a></section>
-      <section class="card t3"><div><span class="tag">Theme 03 · Bold Action</span><div class="title">行動導向・活力橘</div><div class="sub">強調推進速度與執行力，適合產品衝刺與行銷型網站。</div></div><a class="cta" href="#">立即啟動</a></section>
-      <section class="card t4"><div><span class="tag">Theme 04 · Premium Creator</span><div class="title">創意高端・紫光</div><div class="sub">適合個人品牌與創作者定位，呈現差異化與獨特審美。</div></div><a class="cta" href="#">閱讀故事</a></section>
-      <section class="card t5"><div><span class="tag">Theme 05 · Calm Future</span><div class="title">未來感・青綠</div><div class="sub">偏產品設計與科技感，兼具清爽與前衛，適合 SaaS 首頁。</div></div><a class="cta" href="#">免費試用</a></section>
-      <section class="card t6"><div><span class="tag">Theme 06 · Minimal Mono</span><div class="title">極簡黑白・高對比</div><div class="sub">風格克制，訊息聚焦，適合強內容與高端專業形象。</div></div><a class="cta" href="#">看更多案例</a></section>
-    </div>
+    <h1>Master FJ — Homepage Style Lab</h1>
+    <p class="desc">六種配色與 tone。可切換、可截圖、可持續擴充後上傳到 GitHub Pages。</p>
+
+    <div class="toolbar" id="toolbar"></div>
+
+    <section class="hero" id="hero">
+      <div>
+        <span class="tag" id="tag"></span>
+        <div class="title" id="title"></div>
+        <div class="sub" id="sub"></div>
+        <a class="cta" id="cta" href="#">開始</a>
+      </div>
+      <div class="meta"><span id="palette"></span><span id="tone"></span></div>
+    </section>
+
+    <div class="thumb-grid" id="thumbs"></div>
   </div>
+
+<script>
+const themes=[
+ {id:'t1',name:'Trust Tech',title:'冷靜專業・科技藍',sub:'適合 AI/顧問品牌，傳達可靠、理性、可規模化。',cta:'開始合作',palette:'#0f172a / #1e3a8a / #2563eb',tone:'Rational / Scalable'},
+ {id:'t2',name:'Growth Nature',title:'穩健成長・森林綠',sub:'適合教育與長期服務，給人安心、持續優化的感受。',cta:'查看方案',palette:'#111827 / #14532d / #22c55e',tone:'Warm / Sustainable'},
+ {id:'t3',name:'Bold Action',title:'行動導向・活力橘',sub:'強調推進速度與執行力，適合產品衝刺與行銷型網站。',cta:'立即啟動',palette:'#1f2937 / #7c2d12 / #f97316',tone:'Energetic / Action'},
+ {id:'t4',name:'Premium Creator',title:'創意高端・紫光',sub:'適合個人品牌與創作者定位，呈現差異化與獨特審美。',cta:'閱讀故事',palette:'#2e1065 / #7e22ce / #e879f9',tone:'Premium / Creative'},
+ {id:'t5',name:'Calm Future',title:'未來感・青綠',sub:'偏產品設計與科技感，兼具清爽與前衛，適合 SaaS 首頁。',cta:'免費試用',palette:'#0f172a / #0f766e / #2dd4bf',tone:'Modern / Calm'},
+ {id:'t6',name:'Minimal Mono',title:'極簡黑白・高對比',sub:'風格克制，訊息聚焦，適合強內容與高端專業形象。',cta:'看更多案例',palette:'#0f0f10 / #3f3f46 / #a1a1aa',tone:'Minimal / Editorial'},
+];
+const hero=document.getElementById('hero');
+const ids=['tag','title','sub','cta','palette','tone'].reduce((a,id)=>(a[id]=document.getElementById(id),a),{});
+const tb=document.getElementById('toolbar'); const thumbs=document.getElementById('thumbs');
+let current='t1';
+function render(){
+  const t=themes.find(x=>x.id===current);
+  hero.className='hero '+t.id;
+  ids.tag.textContent=`Theme · ${t.name}`;
+  ids.title.textContent=t.title; ids.sub.textContent=t.sub; ids.cta.textContent=t.cta;
+  ids.palette.textContent=`Palette: ${t.palette}`; ids.tone.textContent=`Tone: ${t.tone}`;
+  [...tb.children].forEach(x=>x.classList.toggle('active',x.dataset.id===current));
+}
+themes.forEach(t=>{
+  const b=document.createElement('button'); b.className='btn'; b.dataset.id=t.id; b.textContent=t.name; b.onclick=()=>{current=t.id;render()}; tb.appendChild(b);
+  const k=document.createElement('div'); k.className='thumb '+t.id; k.textContent=t.name; k.onclick=()=>{current=t.id;render();window.scrollTo({top:0,behavior:'smooth'})}; thumbs.appendChild(k);
+});
+render();
+</script>
 </body>
 </html>
