@@ -10,3 +10,10 @@ Pages:
 - /site/pages/onboarding.html
 - /site/pages/dashboard.html
 - /site/pages/emails.html
+
+## Prototypes added
+- /site/pages/onboarding-prototype.html
+- /site/pages/dashboard-prototype.html
+- /site/pages/emails-playbook.html
+- /site/pages/home-alt-a.html
+- /site/pages/home-alt-b.html

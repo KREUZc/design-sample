@@ -1,0 +1,20 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Email Playbook</title><link rel="stylesheet" href="../assets/css/theme.css"></head><body>
+<header class="topbar"><div class="container nav"><a class="brand" href="../index.html">Next 夥伴</a></div></header>
+<section class="section"><div class="container"><h2>Email 模板（可複製）</h2><p class="small">點「複製」可複製 subject + body。</p>
+<div id="list"></div></div></section>
+<script>
+const tpl=[
+ {k:'預讀信',s:'Sprint #N 預讀 / 導師視角',b:'以下為導師思想框架模擬。\n今晚 21:00 收線。先回答三個問題：...'},
+ {k:'收線提醒',s:'Sprint #N 還剩 2 小時',b:'未完成：A/B\n最小可完成版本：...'},
+ {k:'月度導師信',s:'四月回顧 / 導師視角',b:'本月你完成了...\n下月重點是...'},
+ {k:'接力里程碑',s:'接力滿 10 棒',b:'第 10 棒。這個數字本身比任何一個 sprint 都重要。'},
+ {k:'系統通知',s:'明天 09:00 首次扣款 NT$599',b:'明天將首次扣款 NT$599。若不續訂，今晚 23:59 前於帳單頁操作。'}
+];
+const root=document.getElementById('list');
+for(const t of tpl){
+ const el=document.createElement('div');el.className='card';el.style.marginBottom='10px';
+ el.innerHTML=`<h3>${t.k}</h3><div><strong>Subject</strong><pre>${t.s}</pre></div><div><strong>Body</strong><pre>${t.b}</pre></div><button class='btn btn-primary'>複製</button>`;
+ el.querySelector('button').onclick=async()=>{await navigator.clipboard.writeText(`Subject: ${t.s}\n\n${t.b}`);el.querySelector('button').textContent='已複製';setTimeout(()=>el.querySelector('button').textContent='複製',1000)};
+ root.appendChild(el);
+}
+</script></body></html>

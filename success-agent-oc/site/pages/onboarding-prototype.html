@@ -1,0 +1,20 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Onboarding Prototype</title><link rel="stylesheet" href="../assets/css/theme.css"></head><body>
+<header class="topbar"><div class="container nav"><a class="brand" href="../index.html">Next 夥伴</a></div></header>
+<section class="section"><div class="container"><h2>Onboarding 互動原型（7 步）</h2><p class="small">含 Step2 主任務+支線、Step4 Money Model 範本、Step6 sprint 週期切換。</p>
+<div class="card"><div id="stepTitle" class="kpi" style="font-size:24px"></div><div id="stepBody"></div>
+<div class="cta-row"><button class="btn btn-ghost" id="prev">上一步</button><button class="btn btn-primary" id="next">下一步</button></div>
+<div class="small" id="progress"></div></div></div></section>
+<script>
+const steps=[
+ {t:'Step1 你是什麼人',b:'<input style="width:100%;padding:10px" placeholder="例如：SaaS 工程師 + 副業創作者">'},
+ {t:'Step2 想推進的事',b:'<label>主任務</label><input style="width:100%;padding:10px"><br><label>支線 1</label><input style="width:100%;padding:10px"><br><label>支線 2</label><input style="width:100%;padding:10px">'},
+ {t:'Step3 Launch Definition',b:'<textarea style="width:100%;min-height:90px">持續型 launch 範例：連續 8 週準時出刊。</textarea>'},
+ {t:'Step4 Money Model',b:'<select style="width:100%;padding:10px"><option>電商</option><option>服務業</option><option>內容創作</option><option>諮詢</option></select><textarea style="width:100%;min-height:90px;margin-top:8px"></textarea>'},
+ {t:'Step5 Avatar',b:'<textarea style="width:100%;min-height:90px"></textarea>'},
+ {t:'Step6 Sprint 週期',b:'<label><input type="radio" name="sp" checked> 2 天</label> <label><input type="radio" name="sp"> 1 週</label>'},
+ {t:'Step7 風格與推播',b:'<label><input type="checkbox" checked> Email 通知</label><br><label><input type="checkbox"> LINE Push</label>'}
+];
+let i=0;const t=document.getElementById('stepTitle'),b=document.getElementById('stepBody'),p=document.getElementById('progress');
+function r(){t.textContent=steps[i].t;b.innerHTML=steps[i].b;p.textContent=`${i+1} / ${steps.length}`}
+prev.onclick=()=>{i=Math.max(0,i-1);r()};next.onclick=()=>{i=Math.min(steps.length-1,i+1);r()};r();
+</script></body></html>
