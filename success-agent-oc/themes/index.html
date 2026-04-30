@@ -1,0 +1,30 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Success Agent OC — 7 Theme Lab</title>
+<style>
+*{box-sizing:border-box} body{margin:0;background:#07090d;color:#e8f1ff;font-family:Inter,"Noto Sans TC",sans-serif}
+.wrap{max-width:1280px;margin:0 auto;padding:24px} h1{margin:0 0 6px;font-size:30px} .desc{opacity:.8}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.btn{padding:8px 12px;border:1px solid #355;border-radius:999px;background:#112;color:#dff;cursor:pointer}
+.btn.active{background:#dff;color:#012}
+.hero{min-height:420px;border-radius:20px;padding:28px;border:1px solid rgba(255,255,255,.2);display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.03),rgba(255,255,255,.03) 1px,transparent 1px,transparent 3px);pointer-events:none}
+.tag{font-size:12px;background:rgba(255,255,255,.14);padding:6px 10px;border-radius:999px;display:inline-block}
+.title{font-size:52px;font-weight:800;margin:10px 0;line-height:1.06}.sub{max-width:58ch;opacity:.9;line-height:1.85}
+.cta{display:inline-block;margin-top:14px;padding:10px 14px;border:1px solid rgba(255,255,255,.45);border-radius:10px;text-decoration:none;color:inherit}
+.block{margin-top:16px;padding:16px;border-radius:14px;border:1px solid rgba(255,255,255,.2);background:rgba(0,0,0,.18)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-top:14px}.thumb{min-height:86px;border-radius:10px;padding:10px;border:1px solid rgba(255,255,255,.2);cursor:pointer;display:flex;align-items:flex-end;font-weight:700;font-size:12px}
+.t1{background:linear-gradient(135deg,#081223,#0c2f4f,#116fa6)} .t2{background:linear-gradient(135deg,#06141a,#15515a,#2db8b8)} .t3{background:linear-gradient(135deg,#1a0718,#5f184a,#dd2f87)} .t4{background:linear-gradient(135deg,#16181f,#3a4152,#95a3bb)} .t5{background:linear-gradient(135deg,#1f1608,#7f4f06,#ffae00)} .t6{background:linear-gradient(135deg,#07090a,#1b2b32,#8ff4ff)} .t7{background:linear-gradient(135deg,#FAF7F2,#1B2A3A)}
+</style></head><body><div class="wrap"><h1>Success Agent OC · Theme Direction Lab</h1><div class="desc">7 個主題：6 個天馬行空 + 1 個 Kotler palette 指定版（火光橙）。每個主題含首頁 Hero + 版面區塊。</div><div class="toolbar" id="tb"></div><section id="hero" class="hero"></section><div class="grid" id="thumbs"></div></div>
+<script>
+const themes=[
+{id:'t1',name:'Neural Harbor',title:'神經港灣・深海藍',sub:'偏技術信任與系統化，適合架構/顧問語境。',cta:'開始 Sprint',palette:'#081223/#0c2f4f/#116fa6',tone:'Analytical / Tactical',block:'<h3>Section: 今日戰情</h3><p>顯示 sprint 進度、剩餘時間、風險任務與下一步。'} ,
+{id:'t2',name:'Signal Garden',title:'訊號花園・青綠流',sub:'偏 human+system 混合感，讓壓力下降但節奏不散。',cta:'打開任務流',palette:'#06141a/#15515a/#2db8b8',tone:'Calm / Connected',block:'<h3>Section: Mentor 預讀</h3><p>用短箴言+三個提問引導今天決策。'} ,
+{id:'t3',name:'Cyber Bloom',title:'賽博花火・洋紅脈衝',sub:'前衛高能，適合活動頁、發售頁、衝刺起跑。',cta:'執行 Launch',palette:'#1a0718/#5f184a/#dd2f87',tone:'Bold / Experimental',block:'<h3>Section: Launch 倒數</h3><p>保留緊張感但不廉價促銷。'} ,
+{id:'t4',name:'Steel Ritual',title:'鋼鐵儀式・灰鈦',sub:'成熟、穩重、規律，適合 B2B / 管理層受眾。',cta:'部署路線圖',palette:'#16181f/#3a4152/#95a3bb',tone:'Executive / Controlled',block:'<h3>Section: 週覆盤</h3><p>聚焦決策品質與可複製流程。'} ,
+{id:'t5',name:'Amber Mission',title:'琥珀任務・高對比行動',sub:'強調任務完成，適合 CTA 導向。',cta:'完成今天一棒',palette:'#1f1608/#7f4f06/#ffae00',tone:'Urgent / Action',block:'<h3>Section: 收線提醒</h3><p>列出最小可完成版本，降低拖延。'} ,
+{id:'t6',name:'Ghost Minimal',title:'幽靈白・極簡訊號',sub:'高可讀、低噪音，適合長文與 email 模板。',cta:'同步意識',palette:'#07090a/#1b2b32/#8ff4ff',tone:'Minimal / Editorial',block:'<h3>Section: 月度導師信</h3><p>書信體格式，支援截圖與列印。'} ,
+{id:'t7',name:'Next Partner Core',title:'Next 夥伴・火光紀律（指定版）',sub:'以火光橙推進行動，夜空藍黑穩住秩序，沙紙白承載內容，薄荷綠點亮完成。',cta:'連勝紀錄 +1',palette:'#E85D2A / #1B2A3A / #FAF7F2 / #3FBF87',tone:'Disciplined / Human',block:'<h3>Section: 接力里程碑</h3><p>主數字用深藍黑，CTA 用火光橙，完成狀態點薄荷綠。<br><strong>接力第 10 棒</strong> · 今天 21:00 收線。'}
+];
+const hero=document.getElementById('hero');const tb=document.getElementById('tb');const thumbs=document.getElementById('thumbs');let cur='t1';
+function render(){const t=themes.find(x=>x.id===cur);hero.className='hero '+t.id;hero.innerHTML=`<div><span class='tag'>${t.name}</span><div class='title'>${t.title}</div><div class='sub'>${t.sub}</div><a class='cta' href='#'>${t.cta}</a></div><div class='block'>${t.block}<div style='margin-top:10px;font-size:12px;opacity:.82'>Palette: ${t.palette} · Tone: ${t.tone}</div></div>`;[...tb.children].forEach(b=>b.classList.toggle('active',b.dataset.id===cur));}
+for(const t of themes){const b=document.createElement('button');b.className='btn';b.textContent=t.name;b.dataset.id=t.id;b.onclick=()=>{cur=t.id;render()};tb.appendChild(b);const k=document.createElement('div');k.className='thumb '+t.id;k.textContent=t.name;k.onclick=()=>{cur=t.id;render();window.scrollTo({top:0,behavior:'smooth'})};thumbs.appendChild(k)}
+render();
+</script></body></html>
