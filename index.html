@@ -3,35 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>design-sample · Homepage Themes</title>
+  <title>design-sample · GITS Future Themes</title>
   <style>
-    :root{--bg:#0b0b0b;--fg:#fff;--muted:rgba(255,255,255,.78)}
-    *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--fg)}
-    .wrap{max-width:1200px;margin:0 auto;padding:26px 18px 40px}
-    h1{font-size:28px;margin:0 0 6px}.desc{opacity:.85;margin:0 0 14px}
+    :root{--bg:#05070b;--fg:#d8ecff;--muted:#9bb7cf;--line:rgba(120,190,255,.25)}
+    *{box-sizing:border-box} body{margin:0;font-family:"IBM Plex Sans",Inter,system-ui;background:radial-gradient(circle at 20% 10%,#0b1220 0,#05070b 48%,#030406 100%);color:var(--fg)}
+    .scan{position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(to bottom,rgba(130,190,255,.03),rgba(130,190,255,.03) 1px,transparent 1px,transparent 3px);mix-blend-mode:screen;opacity:.45}
+    .wrap{max-width:1200px;margin:0 auto;padding:26px 18px 40px;position:relative}
+    h1{font-size:28px;letter-spacing:.08em;margin:0 0 6px;text-transform:uppercase}
+    .desc{opacity:.9;margin:0 0 14px;color:var(--muted)}
     .toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 18px}
-    .btn{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.06);color:var(--fg);cursor:pointer;font-size:13px}
-    .btn.active{background:#fff;color:#111;border-color:#fff}
-    .hero{border-radius:20px;overflow:hidden;min-height:420px;position:relative;padding:30px;border:1px solid rgba(255,255,255,.18);display:flex;flex-direction:column;justify-content:space-between}
-    .tag{display:inline-block;font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.16)}
-    .title{font-size:54px;font-weight:800;line-height:1.05;letter-spacing:.02em;margin:12px 0}.sub{font-size:16px;line-height:1.8;max-width:52ch;color:var(--muted)}
-    .cta{align-self:flex-start;margin-top:16px;padding:11px 15px;border-radius:10px;border:1px solid rgba(255,255,255,.42);text-decoration:none;color:inherit;font-weight:700}
-    .meta{display:flex;gap:12px;align-items:center;font-size:12px;opacity:.8;margin-top:12px}
+    .btn{padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(20,40,60,.35);color:var(--fg);cursor:pointer;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+    .btn.active{background:#9fd8ff;color:#02111f;border-color:#9fd8ff}
+    .hero{border-radius:18px;overflow:hidden;min-height:460px;position:relative;padding:30px;border:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;box-shadow:inset 0 0 0 1px rgba(175,220,255,.08),0 0 60px rgba(60,150,255,.12)}
+    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 0 40%,rgba(170,220,255,.08) 47%,transparent 55%);animation:sweep 6s linear infinite}
+    @keyframes sweep{from{transform:translateX(-60%)}to{transform:translateX(65%)}}
+    .tag{display:inline-block;font-size:11px;padding:6px 10px;border-radius:999px;background:rgba(120,190,255,.18);border:1px solid var(--line)}
+    .title{font-size:56px;font-weight:800;line-height:1.03;letter-spacing:.04em;margin:12px 0}
+    .sub{font-size:16px;line-height:1.8;max-width:56ch;color:var(--muted)}
+    .cta{align-self:flex-start;margin-top:16px;padding:11px 15px;border-radius:10px;border:1px solid rgba(160,220,255,.7);text-decoration:none;color:inherit;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:rgba(10,30,50,.35)}
+    .meta{display:flex;gap:12px;align-items:center;font-size:12px;color:#a3c7e8;margin-top:12px}
     .thumb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-top:18px}
-    .thumb{border-radius:12px;min-height:84px;border:1px solid rgba(255,255,255,.14);padding:10px;cursor:pointer;display:flex;align-items:flex-end;font-size:12px;font-weight:700}
+    .thumb{border-radius:12px;min-height:84px;border:1px solid var(--line);padding:10px;cursor:pointer;display:flex;align-items:flex-end;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
 
-    .t1{background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb)}
-    .t2{background:linear-gradient(135deg,#111827,#14532d,#22c55e)}
-    .t3{background:linear-gradient(135deg,#1f2937,#7c2d12,#f97316)}
-    .t4{background:linear-gradient(135deg,#2e1065,#7e22ce,#e879f9)}
-    .t5{background:linear-gradient(135deg,#0f172a,#0f766e,#2dd4bf)}
-    .t6{background:linear-gradient(135deg,#0f0f10,#3f3f46,#a1a1aa)}
+    .t1{background:linear-gradient(135deg,#07111e,#0d2238,#16507a)}
+    .t2{background:linear-gradient(135deg,#041317,#0b3c44,#0a7f88)}
+    .t3{background:linear-gradient(135deg,#160512,#5c1244,#c0267a)}
+    .t4{background:linear-gradient(135deg,#11131a,#2f3646,#7b879f)}
+    .t5{background:linear-gradient(135deg,#1a1205,#6e4a0d,#e8a300)}
+    .t6{background:linear-gradient(135deg,#070809,#1e2c31,#86f0ff)}
   </style>
 </head>
 <body>
+  <div class="scan"></div>
   <div class="wrap">
-    <h1>Master FJ — Homepage Style Lab</h1>
-    <p class="desc">六種配色與 tone。可切換、可截圖、可持續擴充後上傳到 GitHub Pages。</p>
+    <h1>Ghost Interface · Homepage Style Lab</h1>
+    <p class="desc">攻殼機動隊氛圍：冷色金屬、HUD 光層、神經連網感。六種未來感 theme 可切換。</p>
 
     <div class="toolbar" id="toolbar"></div>
 
@@ -40,7 +46,7 @@
         <span class="tag" id="tag"></span>
         <div class="title" id="title"></div>
         <div class="sub" id="sub"></div>
-        <a class="cta" id="cta" href="#">開始</a>
+        <a class="cta" id="cta" href="#">Initialize Protocol</a>
       </div>
       <div class="meta"><span id="palette"></span><span id="tone"></span></div>
     </section>
@@ -50,12 +56,12 @@
 
 <script>
 const themes=[
- {id:'t1',name:'Trust Tech',title:'冷靜專業・科技藍',sub:'適合 AI/顧問品牌，傳達可靠、理性、可規模化。',cta:'開始合作',palette:'#0f172a / #1e3a8a / #2563eb',tone:'Rational / Scalable'},
- {id:'t2',name:'Growth Nature',title:'穩健成長・森林綠',sub:'適合教育與長期服務，給人安心、持續優化的感受。',cta:'查看方案',palette:'#111827 / #14532d / #22c55e',tone:'Warm / Sustainable'},
- {id:'t3',name:'Bold Action',title:'行動導向・活力橘',sub:'強調推進速度與執行力，適合產品衝刺與行銷型網站。',cta:'立即啟動',palette:'#1f2937 / #7c2d12 / #f97316',tone:'Energetic / Action'},
- {id:'t4',name:'Premium Creator',title:'創意高端・紫光',sub:'適合個人品牌與創作者定位，呈現差異化與獨特審美。',cta:'閱讀故事',palette:'#2e1065 / #7e22ce / #e879f9',tone:'Premium / Creative'},
- {id:'t5',name:'Calm Future',title:'未來感・青綠',sub:'偏產品設計與科技感，兼具清爽與前衛，適合 SaaS 首頁。',cta:'免費試用',palette:'#0f172a / #0f766e / #2dd4bf',tone:'Modern / Calm'},
- {id:'t6',name:'Minimal Mono',title:'極簡黑白・高對比',sub:'風格克制，訊息聚焦，適合強內容與高端專業形象。',cta:'看更多案例',palette:'#0f0f10 / #3f3f46 / #a1a1aa',tone:'Minimal / Editorial'},
+ {id:'t1',name:'Neo Tokyo Blue',title:'神經介面・深海藍',sub:'以冷靜藍黑建立「高科技可信任感」，適合 AI 顧問與系統架構品牌。',cta:'Initialize Protocol',palette:'#07111e / #0d2238 / #16507a',tone:'Tactical / Analytical'},
+ {id:'t2',name:'Cyan Network',title:'網絡流・青綠訊號',sub:'像資料流在暗網中穿行，強調即時協作與自動化流程。',cta:'Open Data Stream',palette:'#041317 / #0b3c44 / #0a7f88',tone:'Connected / Fluid'},
+ {id:'t3',name:'Cyber Magenta',title:'賽博脈衝・洋紅',sub:'偏強烈風格，用於凸顯創新實驗、前衛敘事與產品突破。',cta:'Run Experiment',palette:'#160512 / #5c1244 / #c0267a',tone:'Bold / Experimental'},
+ {id:'t4',name:'Steel Shell',title:'義體金屬・灰鋼',sub:'低飽和金屬質地，傳達高端、穩定、戰術級執行。',cta:'Deploy Stack',palette:'#11131a / #2f3646 / #7b879f',tone:'Premium / Controlled'},
+ {id:'t5',name:'Amber Alert',title:'警戒琥珀・行動指令',sub:'以警示橘黃作為行動導向，適合 CTA 強、銷售導向首頁。',cta:'Execute Mission',palette:'#1a1205 / #6e4a0d / #e8a300',tone:'Urgent / Action'},
+ {id:'t6',name:'Ghost White',title:'電子幽靈・冷白',sub:'高對比冷白訊號風，兼具未來感與內容可讀性。',cta:'Sync Consciousness',palette:'#070809 / #1e2c31 / #86f0ff',tone:'Minimal / Futuristic'},
 ];
 const hero=document.getElementById('hero');
 const ids=['tag','title','sub','cta','palette','tone'].reduce((a,id)=>(a[id]=document.getElementById(id),a),{});
